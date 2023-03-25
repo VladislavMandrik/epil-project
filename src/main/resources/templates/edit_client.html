@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Update User</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+</head>
+
+<body>
+<div class="container my-5">
+    <h3> Update Student</h3>
+    <div class="card">
+        <div class="card-body">
+            <div class="col-md-8">
+                <form action="#" th:action="@{/update/{id}(id=${client.id})}" th:object="${client}" method="post">
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="name" class="col-form-label">Name</label> <input type="text" th:field="*{name}" class="form-control" id="name" placeholder="Name"> <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-danger"></span>
+                        </div>
+                        <div class="form-group col-md-8">
+                            <label for="number" class="col-form-label">Number</label> <input type="text" th:field="*{number}" class="form-control" id="number" placeholder="Number"> <span th:if="${#fields.hasErrors('number')}" th:errors="*{number}" class="text-danger"></span>
+                        </div>
+                        <div class="form-group col-md-8">
+                            <label for="date" class="col-form-label">Date</label> <input type="text" th:field="*{date}" class="form-control" id="date" placeholder="date"> <span th:if="${#fields.hasErrors('date')}" th:errors="date" class="text-danger"></span>
+                        </div>
+                        <div class="form-group col-md-8">
+                            <label for="zone" class="col-form-label">Zone</label> <input type="text" th:field="*{zone}" class="form-control" id="zone" placeholder="zone"> <span th:if="${#fields.hasErrors('zone')}" th:errors="zone" class="text-danger"></span>
+                        </div>
+                        <div class="form-group col-md-8">
+                            <label for="params" class="col-form-label">Params</label> <input type="text" th:field="*{params}" class="form-control" id="params" placeholder="params"> <span th:if="${#fields.hasErrors('params')}" th:errors="params" class="text-danger"></span>
+                        </div>
+                        <div class="form-group col-md-8">
+                            <label for="price" class="col-form-label">Price</label> <input type="text" th:field="*{price}" class="form-control" id="price" placeholder="price"> <span th:if="${#fields.hasErrors('price')}" th:errors="price" class="text-danger"></span>
+                        </div>
+                        <div class="form-group col-md-8">
+                            <label for="comments" class="col-form-label">Comments</label> <input type="text" th:field="*{comments}" class="form-control" id="comments" placeholder="comments"> <span th:if="${#fields.hasErrors('comments')}" th:errors="comments" class="text-danger"></span>
+                        </div>
+                        <div class="form-group col-md-8">
+                            <label for="masterName" class="col-form-label">Master name</label> <input type="text" th:field="*{masterName}" class="form-control" id="masterName" placeholder="comments"> <span th:if="${#fields.hasErrors('masterName')}" th:errors="masterName" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group col-md-8">
+                            <input type="submit" class="btn btn-primary" value="Update Client">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>
