@@ -1,0 +1,9 @@
+version: '2'
+services:
+  epil-project:
+    container_name: epil-project
+    build:
+      context: docker-epil-project
+      dockerfile: dockerfile
+    image: epil-project:latest
+    restart: no
