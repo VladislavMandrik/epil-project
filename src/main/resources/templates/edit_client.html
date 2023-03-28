@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Update User</title>
+    <title>Update Client</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
@@ -12,7 +12,7 @@
 
 <body>
 <div class="container my-5">
-    <h3> Update Student</h3>
+    <h3> Update Client</h3>
     <div class="card">
         <div class="card-body">
             <div class="col-md-8">
@@ -40,7 +40,7 @@
                             <label for="comments" class="col-form-label">Comments</label> <input type="text" th:field="*{comments}" class="form-control" id="comments" placeholder="comments"> <span th:if="${#fields.hasErrors('comments')}" th:errors="comments" class="text-danger"></span>
                         </div>
                         <div class="form-group col-md-8">
-                            <label for="masterName" class="col-form-label">Master name</label> <input type="text" th:field="*{masterName}" class="form-control" id="masterName" placeholder="comments"> <span th:if="${#fields.hasErrors('masterName')}" th:errors="masterName" class="text-danger"></span>
+                            <label for="masterName" class="col-form-label">Master name</label> <input type="text" th:field="*{masterName}" class="form-control" id="masterName" placeholder="master name"> <span th:if="${#fields.hasErrors('masterName')}" th:errors="masterName" class="text-danger"></span>
                         </div>
 
                         <div class="form-group col-md-8">

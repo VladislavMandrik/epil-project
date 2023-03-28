@@ -100,8 +100,17 @@
     }
 </style>
 
+<form action="/new" method="get" target="_blank">
+    <input type="submit" value="Добавить клиента">
+</form>
+<br>
+Поиск:
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Поиск по ФИО..." size="50">
+<br>
+<br>
 <table id="myTable" class="table_sort">
     <script src="/js/sorter.js"></script>
+    <script src="/js/filter.js"></script>
     <thead>
     <tr class="header">
         <th>ФИО</th>
@@ -110,7 +119,7 @@
         <th>Зона</th>
         <th>Параметры</th>
         <th>Цена</th>
-        <th>Комментарии</th>
+        <th>Ник в инстаграм</th>
         <th>Имя мастера</th>
         <th>Action</th>
     </tr>

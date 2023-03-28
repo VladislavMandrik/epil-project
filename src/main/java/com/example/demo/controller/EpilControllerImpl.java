@@ -28,7 +28,7 @@ public class EpilControllerImpl implements EpilController {
 
     @GetMapping("/get")
     public String getClients(Model model) {
-        model.addAttribute("epil", epilRepository.findAll());
+        model.addAttribute("epil", epilRepository.findAllByOrderByNameAsc());
         return "epil_page";
     }
 
