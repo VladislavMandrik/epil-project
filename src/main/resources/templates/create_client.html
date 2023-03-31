@@ -30,8 +30,8 @@
                 <td><input name="params" /></td>
             </tr>
             <tr>
-                <td>Цена: </td>
-                <td><input name="price" /></td>
+                <td>Цена(только цифры): </td>
+                <td><input name="price" type="number" /></td>
             </tr>
             <tr>
                 <td>Ник в инстаграм: </td>
@@ -39,7 +39,12 @@
             </tr>
             <tr>
                 <td>Фамилия мастера: </td>
-                <td><input name="masterName" /></td>
+                <td>
+                    <select name="masterName">
+                        <option value="Мандрик">Мандрик</option>
+                        <option value="Шамилова">Шамилова</option>
+                        <option value="Мазикова">Мазикова</option>
+                    </select></td>
             </tr>
             <tr>
                 <td colspan="2"><input type="submit" value="Сохранить"></td>

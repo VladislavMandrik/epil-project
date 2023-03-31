@@ -100,14 +100,23 @@
     }
 </style>
 
-<form action="/new" method="get" target="_blank">
+<div style="float: left; width: 49%;"><form action="/new" method="get" target="_blank">
     <input type="submit" value="Добавить клиента">
 </form>
+    <br>
+    Поиск:
+    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Поиск по ФИО..." size="50">
+    <br>
+    <br></div>
 <br>
-Поиск:
-<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Поиск по ФИО..." size="50">
 <br>
-<br>
+<div style="float: right; width: 49%;"><table>
+    <tr><th></th><th>Март</th><th>Апрель</th></tr> <!--ряд с ячейками заголовков-->
+    <tr><td>Мандрик</td><td th:text="${i}"></td><td th:text="${apr}"></td></tr> <!--ряд с ячейками тела таблицы-->
+    <tr><td>Шамилова</td><td th:text="${in}"></td><td th:text="0"></td></tr>
+    <tr><td>Мазикова</td><td th:text="${inter}"></td><td th:text="0"></td></tr>
+</table>
+</div>
 <table id="myTable" class="table_sort">
     <script src="/js/sorter.js"></script>
     <script src="/js/filter.js"></script>

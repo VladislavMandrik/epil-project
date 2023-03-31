@@ -9,4 +9,5 @@ import java.util.List;
 @Repository
 public interface EpilRepository extends JpaRepository<Epil, Long> {
     List<Epil> findAllByOrderByNameAsc();
+    List<Epil> findAllByMasterName(String s);
 }
