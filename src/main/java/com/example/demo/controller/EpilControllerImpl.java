@@ -8,7 +8,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
 import java.util.Map;
@@ -28,11 +27,12 @@ public class EpilControllerImpl implements EpilController {
 
     @GetMapping("/get")
     public String getClients(Model model) {
+        epilService.getEarnings();
         model.addAttribute("epil", epilRepository.findAllByOrderByNameAsc());
-        model.addAttribute("i", epilService.i);
-        model.addAttribute("apr", epilService.apr);
-        model.addAttribute("in", epilService.in);
-        model.addAttribute("inter", epilService.inter);
+        model.addAttribute("manM", epilService.MANDRIK_MARCH);
+        model.addAttribute("manA", epilService.MANDRIK_APRIL);
+        model.addAttribute("sM", epilService.SHAMILOVA_MARCH);
+        model.addAttribute("mazM", epilService.MAZIKOVA_MARCH);
         return "epil_page";
     }
 
@@ -49,12 +49,6 @@ public class EpilControllerImpl implements EpilController {
                 .orElseThrow(() -> new IllegalArgumentException("Invalid client Id:" + id));
         model.addAttribute("client", epil);
         return "edit_client";
-    }
-
-    @GetMapping("/earn")
-    public String getEarn() {
-        epilService.getEarnings();
-        return "epil_page";
     }
 
     @PostMapping("update/{id}")
