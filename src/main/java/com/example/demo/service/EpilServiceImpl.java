@@ -12,13 +12,17 @@ public class EpilServiceImpl implements EpilService {
     public int MANDRIK_MARCH = 0;
     public int MANDRIK_APRIL = 0;
     public int SHAMILOVA_MARCH = 0;
+    public int SHAMILOVA_APRIL = 0;
     public int MAZIKOVA_MARCH = 0;
+    public int MAZIKOVA_APRIL = 0;
 
     public void getEarnings() {
         MANDRIK_MARCH = 0;
         MANDRIK_APRIL = 0;
         SHAMILOVA_MARCH = 0;
+        SHAMILOVA_APRIL = 0;
         MAZIKOVA_MARCH = 0;
+        MAZIKOVA_APRIL = 0;
         for (Epil ep : epilRepository.findAllByMasterName("Мандрик")) {
             if (ep.getDate().contains(".03.2023")) {
                 MANDRIK_MARCH += Integer.parseInt(ep.getPrice());
@@ -28,11 +32,19 @@ public class EpilServiceImpl implements EpilService {
         }
 
         for (Epil ep : epilRepository.findAllByMasterName("Шамилова")) {
-            SHAMILOVA_MARCH += Integer.parseInt(ep.getPrice());
+            if (ep.getDate().contains(".03.2023")) {
+                SHAMILOVA_MARCH += Integer.parseInt(ep.getPrice());
+            } else if (ep.getDate().contains(".04.2023")) {
+                SHAMILOVA_APRIL += Integer.parseInt(ep.getPrice());
+            }
         }
 
         for (Epil ep : epilRepository.findAllByMasterName("Мазикова")) {
-            MAZIKOVA_MARCH += Integer.parseInt(ep.getPrice());
+            if (ep.getDate().contains(".03.2023")) {
+                MAZIKOVA_MARCH += Integer.parseInt(ep.getPrice());
+            } else if (ep.getDate().contains(".04.2023")) {
+                MAZIKOVA_APRIL += Integer.parseInt(ep.getPrice());
+            }
         }
     }
 }

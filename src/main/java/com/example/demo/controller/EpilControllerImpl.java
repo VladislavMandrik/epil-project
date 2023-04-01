@@ -32,7 +32,9 @@ public class EpilControllerImpl implements EpilController {
         model.addAttribute("manM", epilService.MANDRIK_MARCH);
         model.addAttribute("manA", epilService.MANDRIK_APRIL);
         model.addAttribute("sM", epilService.SHAMILOVA_MARCH);
+        model.addAttribute("sA", epilService.SHAMILOVA_APRIL);
         model.addAttribute("mazM", epilService.MAZIKOVA_MARCH);
+        model.addAttribute("mazA", epilService.MAZIKOVA_APRIL);
         return "epil_page";
     }
 
