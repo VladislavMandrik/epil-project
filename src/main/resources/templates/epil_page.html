@@ -95,6 +95,11 @@
         height: 25px;
     }
 
+    .table_sort tr td:nth-child(9) {
+        width: 9%;
+        height: 25px;
+    }
+
     .table_sort tbody tr {
         background: #eeeef1;
     }
@@ -112,7 +117,7 @@
 <br>
 <br>
 <br>
-<div style="float: right; width: 49%;"><table>
+<div style="float: right; width: 45%;"><table>
     <tr><th></th><th>Март</th><th>Апрель</th></tr> <!--ряд с ячейками заголовков-->
     <tr><td>Мандрик</td><td th:text="${manM}"></td><td th:text="${manA}"></td></tr> <!--ряд с ячейками тела таблицы-->
     <tr><td>Шамилова</td><td th:text="${sM}"></td><td th:text="${sA}"></td></tr>
@@ -145,7 +150,8 @@
         <td th:text="${clients.getPrice()}"></td>
         <td th:text="${clients.getComments()}"></td>
         <td th:text="${clients.getMasterName()}"></td>
-        <td><a th:href="@{/edit/{id}(id=${clients.id})}">Edit</a></td>
+        <td><a th:href="@{/edit/{id}(id=${clients.id})}">Edit</a>
+            <a th:href="@{/delete/{id}(id=${clients.id})}">Delete</a></td>
     </tr>
     </tbody>
 </table>

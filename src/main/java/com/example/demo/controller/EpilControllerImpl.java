@@ -72,6 +72,14 @@ public class EpilControllerImpl implements EpilController {
         return "redirect:/get";
     }
 
+    @GetMapping("delete/{id}")
+    public String showDeleteForm(@PathVariable("id") long id) {
+        Epil epil = epilRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid client Id:" + id));
+        epilRepository.delete(epil);
+        return "redirect:/get";
+    }
+
 //    @GetMapping("/teamstats")
 //    public String teamstats(Model model) {
 //        model.addAttribute("teamStats",
