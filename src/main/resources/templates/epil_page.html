@@ -150,8 +150,8 @@
         <td th:text="${clients.getPrice()}"></td>
         <td th:text="${clients.getComments()}"></td>
         <td th:text="${clients.getMasterName()}"></td>
-        <td><a th:href="@{/edit/{id}(id=${clients.id})}">Edit</a>
-            <a th:href="@{/delete/{id}(id=${clients.id})}">Delete</a></td>
+        <td><a th:href="@{/edit/{id}(id=${clients.id})}">Изменить</a>
+            <a th:href="@{/delete/{id}(id=${clients.id})}">Удалить</a></td>
     </tr>
     </tbody>
 </table>
