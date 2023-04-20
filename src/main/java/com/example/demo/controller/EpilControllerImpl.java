@@ -4,12 +4,19 @@ import com.example.demo.model.Epil;
 import com.example.demo.repository.EpilRepository;
 import com.example.demo.service.EpilServiceImpl;
 import lombok.RequiredArgsConstructor;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.Map;
 
 @RequiredArgsConstructor
@@ -27,14 +34,14 @@ public class EpilControllerImpl implements EpilController {
 
     @GetMapping("/get")
     public String getClients(Model model) {
-        epilService.getEarnings();
+//        epilService.getEarnings();
         model.addAttribute("epil", epilRepository.findAllByOrderByNameAsc());
-        model.addAttribute("manM", epilService.MANDRIK_MARCH);
-        model.addAttribute("manA", epilService.MANDRIK_APRIL);
-        model.addAttribute("sM", epilService.SHAMILOVA_MARCH);
-        model.addAttribute("sA", epilService.SHAMILOVA_APRIL);
-        model.addAttribute("mazM", epilService.MAZIKOVA_MARCH);
-        model.addAttribute("mazA", epilService.MAZIKOVA_APRIL);
+        model.addAttribute("manM", epilRepository.findSumInMarchByMandrik());
+        model.addAttribute("manA", epilRepository.findSumInAprilByMandrik());
+        model.addAttribute("sM", epilRepository.findSumInMarchByShamilova());
+        model.addAttribute("sA", epilRepository.findSumInAprilByShamilova());
+        model.addAttribute("mazM", epilRepository.findSumInMarchByMazikova());
+        model.addAttribute("mazA", epilRepository.findSumInAprilByMazikova());
         return "epil_page";
     }
 
@@ -78,6 +85,25 @@ public class EpilControllerImpl implements EpilController {
                 .orElseThrow(() -> new IllegalArgumentException("Invalid client Id:" + id));
         epilRepository.delete(epil);
         return "redirect:/get";
+    }
+
+    @GetMapping("/copy")
+    public ResponseEntity<Object> downloadBackUp() throws IOException {
+        String filename = "backup.txt";
+        File file = new File(filename);
+        InputStreamResource resource = new InputStreamResource(new FileInputStream(file));
+        HttpHeaders headers = new HttpHeaders();
+
+        headers.add("Content-Disposition", String.format("attachment; filename=\"%s\"", file.getName()));
+        headers.add("Cache-Control", "no-cache, no-store, must-revalidate");
+        headers.add("Pragma", "no-cache");
+        headers.add("Expires", "0");
+
+        ResponseEntity<Object>
+                responseEntity = ResponseEntity.ok().headers(headers).contentLength(
+                file.length()).contentType(MediaType.parseMediaType("application/txt")).body(resource);
+
+        return responseEntity;
     }
 
 //    @GetMapping("/teamstats")
