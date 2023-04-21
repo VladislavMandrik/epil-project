@@ -16,7 +16,7 @@ import java.util.Objects;
 public class Scheduler {
     private final EpilRepository epilRepository;
 
-    @Scheduled(fixedRate = 900000)
+    @Scheduled(initialDelay = 800000, fixedRate = 900000)
     public void scheduleFixedRateTask() {
 
         URL url = null;
@@ -35,7 +35,7 @@ public class Scheduler {
         }
     }
 
-    @Scheduled(fixedRate = 86400000)
+    @Scheduled(initialDelay = 125000, fixedRate = 86400000)
     public void scheduleBackUpDBTask() {
 
         try (PrintWriter printWriter = new PrintWriter(new FileWriter("backup.txt"))) {
