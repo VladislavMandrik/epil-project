@@ -39,14 +39,15 @@ public class Scheduler {
     public void scheduleBackUpDBTask() {
 
         try (PrintWriter printWriter = new PrintWriter(new FileWriter("backup.txt"))) {
-            epilRepository.findAll().forEach(epil -> printWriter.write(epil.getId() + "," +
-                    epil.getName() + "," +
-                    epil.getNumber() + "," +
-                    epil.getDate() + "," +
-                    epil.getZone() + "," +
-                    epil.getParams() + "," +
-                    epil.getPrice() + "," +
-                    epil.getComments() + "," +
+            epilRepository.findAll().forEach(epil -> printWriter.write(epil.getId() + "|" +
+                    epil.isDeleted() + "|" +
+                    epil.getName() + "|" +
+                    epil.getNumber() + "|" +
+                    epil.getDate() + "|" +
+                    epil.getZone() + "|" +
+                    epil.getParams() + "|" +
+                    epil.getPrice() + "|" +
+                    epil.getComments() + "|" +
                     epil.getMasterName() + "\n"));
         } catch (IOException e) {
             throw new RuntimeException(e);

@@ -2,17 +2,22 @@ package com.example.demo.model;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
 
 @Data
 @Entity
 @Table(name = "epil")
+@SQLDelete(sql = "UPDATE epil SET deleted = true WHERE id=?")
+@Where(clause = "deleted=false")
 @NoArgsConstructor
 public class Epil {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private boolean deleted = Boolean.FALSE;
     private String name;
     private String number;
     private String date;

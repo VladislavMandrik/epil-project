@@ -36,12 +36,18 @@ public class EpilControllerImpl implements EpilController {
     public String getClients(Model model) {
 //        epilService.getEarnings();
         model.addAttribute("epil", epilRepository.findAllByOrderByNameAsc());
+
         model.addAttribute("manM", epilRepository.findSumInMarchByMandrik());
         model.addAttribute("manA", epilRepository.findSumInAprilByMandrik());
+        model.addAttribute("manMay", epilRepository.findSumInMayByMandrik());
+
         model.addAttribute("sM", epilRepository.findSumInMarchByShamilova());
         model.addAttribute("sA", epilRepository.findSumInAprilByShamilova());
+        model.addAttribute("sMay", epilRepository.findSumInMayByShamilova());
+
         model.addAttribute("mazM", epilRepository.findSumInMarchByMazikova());
         model.addAttribute("mazA", epilRepository.findSumInAprilByMazikova());
+        model.addAttribute("mazMay", epilRepository.findSumInMayByMazikova());
         return "epil_page";
     }
 

@@ -11,16 +11,25 @@ import java.util.List;
 public interface EpilRepository extends JpaRepository<Epil, Long> {
     List<Epil> findAllByOrderByNameAsc();
     List<Epil> findAllByMasterName(String s);
+
     @Query(value = "SELECT SUM(CAST(price AS INT)) FROM march WHERE master_name = 'Мандрик'", nativeQuery = true)
     Integer findSumInMarchByMandrik();
     @Query(value = "SELECT SUM(CAST(price AS INT)) FROM april WHERE master_name = 'Мандрик'", nativeQuery = true)
     Integer findSumInAprilByMandrik();
+    @Query(value = "SELECT SUM(CAST(price AS INT)) FROM may WHERE master_name = 'Мандрик'", nativeQuery = true)
+    Integer findSumInMayByMandrik();
+
     @Query(value = "SELECT SUM(CAST(price AS INT)) FROM march WHERE master_name = 'Мазикова'", nativeQuery = true)
     Integer findSumInMarchByMazikova();
     @Query(value = "SELECT SUM(CAST(price AS INT)) FROM april WHERE master_name = 'Мазикова'", nativeQuery = true)
     Integer findSumInAprilByMazikova();
+    @Query(value = "SELECT SUM(CAST(price AS INT)) FROM may WHERE master_name = 'Мазикова'", nativeQuery = true)
+    Integer findSumInMayByMazikova();
+
     @Query(value = "SELECT SUM(CAST(price AS INT)) FROM march WHERE master_name = 'Шамилова'", nativeQuery = true)
     Integer findSumInMarchByShamilova();
     @Query(value = "SELECT SUM(CAST(price AS INT)) FROM april WHERE master_name = 'Шамилова'", nativeQuery = true)
     Integer findSumInAprilByShamilova();
+    @Query(value = "SELECT SUM(CAST(price AS INT)) FROM may WHERE master_name = 'Шамилова'", nativeQuery = true)
+    Integer findSumInMayByShamilova();
 }
