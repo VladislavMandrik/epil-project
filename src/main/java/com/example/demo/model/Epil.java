@@ -27,9 +27,10 @@ public class Epil {
     private String comments;
     private String masterName;
 
-    public Epil(Long id, String name, String number, String date, String zone, String params, String price,
+    public Epil(Long id, boolean deleted, String name, String number, String date, String zone, String params, String price,
                 String comments, String masterName) {
         this.id = id;
+        this.deleted = deleted;
         this.name = name;
         this.number = number;
         this.date = date;

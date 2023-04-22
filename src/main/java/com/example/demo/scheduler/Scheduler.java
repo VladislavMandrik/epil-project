@@ -37,7 +37,6 @@ public class Scheduler {
 
     @Scheduled(initialDelay = 125000, fixedRate = 86400000)
     public void scheduleBackUpDBTask() {
-
         try (PrintWriter printWriter = new PrintWriter(new FileWriter("backup.txt"))) {
             epilRepository.findAll().forEach(epil -> printWriter.write(epil.getId() + "|" +
                     epil.isDeleted() + "|" +

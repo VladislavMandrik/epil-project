@@ -14,9 +14,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
+import java.io.*;
+import java.util.Arrays;
 import java.util.Map;
 
 @RequiredArgsConstructor
@@ -112,10 +111,20 @@ public class EpilControllerImpl implements EpilController {
         return responseEntity;
     }
 
-//    @GetMapping("/teamstats")
-//    public String teamstats(Model model) {
-//        model.addAttribute("teamStats",
-//                teamStatsRepository.findAllByOrderByPowerPlayDesc());
-//        return "teamStats_page";
-//    }
+    @GetMapping("/rollback")
+    public String rollBack() {
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader("backup.txt"));
+
+            String c;
+            while ((c = reader.readLine()) != null) {
+                String[] words = c.split("\\|");
+                epilRepository.save(new Epil(Long.parseLong(words[0]), Boolean.parseBoolean(words[1]), words[2], words[3], words[4], words[5], words[6],
+                        words[7], words[8], words[9]));
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return "rollback-success_page";
+    }
 }
