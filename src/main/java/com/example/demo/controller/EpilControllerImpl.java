@@ -15,7 +15,12 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.io.*;
-import java.util.Arrays;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 import java.util.Map;
 
 @RequiredArgsConstructor
@@ -33,8 +38,12 @@ public class EpilControllerImpl implements EpilController {
 
     @GetMapping("/get")
     public String getClients(Model model) {
-//        epilService.getEarnings();
-        model.addAttribute("epil", epilRepository.findAllByOrderByNameAsc());
+        List<Epil> allByOrderByNameAsc = epilRepository.findAllByOrderByNameAsc();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+        Collections.sort(allByOrderByNameAsc, Comparator.comparing(o -> LocalDate.parse(o.getDate(), formatter)));
+        Collections.reverse(allByOrderByNameAsc);
+
+        model.addAttribute("epil", allByOrderByNameAsc);
 
         model.addAttribute("manM", epilRepository.findSumInMarchByMandrik());
         model.addAttribute("manA", epilRepository.findSumInAprilByMandrik());
