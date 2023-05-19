@@ -15,11 +15,11 @@
             </tr>
             <tr>
                 <td>Номер телефона: </td>
-                <td><input name="number" /></td>
+                <td><input name="number" placeholder="+375xxxxxxxxx" pattern="^\+375(\s+)?\(?(17|25|29|33|44)\)?(\s+)?[0-9]{3}-?[0-9]{2}-?[0-9]{2}$" required/></td>
             </tr>
             <tr>
-                <td>Дата посещения(xx.xx.xxxx): </td>
-                <td><input name="date" /></td>
+                <td>Дата посещения: </td>
+                <td><input name="date" placeholder="xx.xx.xxxx" pattern="(0[1-9]|1[0-9]|2[0-9]|3[01]).(0[1-9]|1[012]).[0-9]{4}" required/></td>
             </tr>
             <tr>
                 <td>Зоны: </td>
