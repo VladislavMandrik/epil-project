@@ -48,14 +48,17 @@ public class EpilControllerImpl implements EpilController {
         model.addAttribute("manM", epilRepository.findSumInMarchByMandrik());
         model.addAttribute("manA", epilRepository.findSumInAprilByMandrik());
         model.addAttribute("manMay", epilRepository.findSumInMayByMandrik());
+        model.addAttribute("manJune", epilRepository.findSumInJuneByMandrik());
 
         model.addAttribute("sM", epilRepository.findSumInMarchByShamilova());
         model.addAttribute("sA", epilRepository.findSumInAprilByShamilova());
         model.addAttribute("sMay", epilRepository.findSumInMayByShamilova());
+        model.addAttribute("sJune", epilRepository.findSumInJuneByShamilova());
 
         model.addAttribute("mazM", epilRepository.findSumInMarchByMazikova());
         model.addAttribute("mazA", epilRepository.findSumInAprilByMazikova());
         model.addAttribute("mazMay", epilRepository.findSumInMayByMazikova());
+        model.addAttribute("mazJune", epilRepository.findSumInJuneByMazikova());
         return "epil_page";
     }
 

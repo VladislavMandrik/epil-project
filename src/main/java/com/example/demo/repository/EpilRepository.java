@@ -18,6 +18,8 @@ public interface EpilRepository extends JpaRepository<Epil, Long> {
     Integer findSumInAprilByMandrik();
     @Query(value = "SELECT SUM(CAST(price AS INT)) FROM may WHERE master_name = 'Мандрик'", nativeQuery = true)
     Integer findSumInMayByMandrik();
+    @Query(value = "SELECT SUM(CAST(price AS INT)) FROM june WHERE master_name = 'Мандрик'", nativeQuery = true)
+    Integer findSumInJuneByMandrik();
 
     @Query(value = "SELECT SUM(CAST(price AS INT)) FROM march WHERE master_name = 'Мазикова'", nativeQuery = true)
     Integer findSumInMarchByMazikova();
@@ -25,6 +27,8 @@ public interface EpilRepository extends JpaRepository<Epil, Long> {
     Integer findSumInAprilByMazikova();
     @Query(value = "SELECT SUM(CAST(price AS INT)) FROM may WHERE master_name = 'Мазикова'", nativeQuery = true)
     Integer findSumInMayByMazikova();
+    @Query(value = "SELECT SUM(CAST(price AS INT)) FROM june WHERE master_name = 'Мазикова'", nativeQuery = true)
+    Integer findSumInJuneByMazikova();
 
     @Query(value = "SELECT SUM(CAST(price AS INT)) FROM march WHERE master_name = 'Шамилова'", nativeQuery = true)
     Integer findSumInMarchByShamilova();
@@ -32,4 +36,6 @@ public interface EpilRepository extends JpaRepository<Epil, Long> {
     Integer findSumInAprilByShamilova();
     @Query(value = "SELECT SUM(CAST(price AS INT)) FROM may WHERE master_name = 'Шамилова'", nativeQuery = true)
     Integer findSumInMayByShamilova();
+    @Query(value = "SELECT SUM(CAST(price AS INT)) FROM june WHERE master_name = 'Шамилова'", nativeQuery = true)
+    Integer findSumInJuneByShamilova();
 }
